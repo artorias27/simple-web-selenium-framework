@@ -13,8 +13,8 @@ public final class DriverManager {
         return threadDriver.get();
     }
 
-    public static void setDriver(WebDriver dr) {
-        threadDriver.set(dr);
+    public static void setDriver(WebDriver driver) {
+        threadDriver.set(driver);
     }
 
     public static void unload() {
