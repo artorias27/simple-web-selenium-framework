@@ -21,6 +21,7 @@ public class OrangeHRMTests extends BaseTest {
         String pageTitle = "Dashboard";
         loginPage.enterUsername().enterPassword().clickLoginButton();
         Assert.assertEquals(homePage.getPageTitle(), pageTitle);
-        homePage.clickProfile().clickLogout();
+        homePage.clickProfile().selectProfileMenu("Support");
+        homePage.clickProfile().selectProfileMenu("Logout");
     }
 }
