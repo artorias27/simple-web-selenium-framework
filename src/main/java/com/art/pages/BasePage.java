@@ -12,8 +12,7 @@ import java.util.Objects;
 
 public class BasePage {
     protected void click(By by) {
-        waitForElementToBeClickable(by);
-        DriverManager.getDriver().findElement(by).click();
+        waitForElementToBeClickable(by).click();
     }
 
     protected void clickSpecificElementByText(By by, String textValue) {
@@ -25,8 +24,7 @@ public class BasePage {
     }
 
     protected void sendKeys(By by, String value) {
-        waitForElementToBePresent(by);
-        DriverManager.getDriver().findElement(by).sendKeys(value);
+        waitForElementToBePresent(by).sendKeys(value);
     }
 
 //    protected String getAttributeText(By by) {
@@ -35,17 +33,16 @@ public class BasePage {
 //    }
 
     protected String getInnerText(By by) {
-        waitForElementToBePresent(by);
-        return DriverManager.getDriver().findElement(by).getText();
+        return waitForElementToBePresent(by).getText();
     }
 
-    protected void waitForElementToBeClickable(By by) {
-        new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.WAIT_TIME))
+    protected WebElement waitForElementToBeClickable(By by) {
+        return new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.WAIT_TIME))
                 .until(ExpectedConditions.elementToBeClickable(by));
     }
 
-    protected void waitForElementToBePresent(By by) {
-        new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.WAIT_TIME))
+    protected WebElement waitForElementToBePresent(By by) {
+        return new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.WAIT_TIME))
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
 }
