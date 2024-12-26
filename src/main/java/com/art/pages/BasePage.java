@@ -18,7 +18,7 @@ public class BasePage {
     protected void clickSpecificElementByText(By by, String textValue) {
         waitForElementToBePresent(by);
         List<WebElement> elements = DriverManager.getDriver().findElements(by);
-        WebElement foundElement = elements.stream().filter(element -> Objects.equals(element.getAttribute("text"), textValue))
+        WebElement foundElement = elements.stream().filter(element -> Objects.equals(element.getDomProperty("text"), textValue))
                 .toList().get(0);
         foundElement.click();
     }
@@ -27,12 +27,7 @@ public class BasePage {
         waitForElementToBePresent(by).sendKeys(value);
     }
 
-//    protected String getAttributeText(By by) {
-//        waitForElementToBePresent(by);
-//        return DriverManager.getDriver().findElement(by).getAttribute("text");
-//    }
-
-    protected String getInnerText(By by) {
+    protected String getVisibleText(By by) {
         return waitForElementToBePresent(by).getText();
     }
 

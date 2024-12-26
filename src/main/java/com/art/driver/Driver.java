@@ -7,8 +7,7 @@ import java.time.Duration;
 import java.util.Objects;
 
 public final class Driver {
-    private Driver() {
-    }
+    private Driver() {}
 
     public static void initDriver() {
         if (Objects.isNull(DriverManager.getDriver())) {

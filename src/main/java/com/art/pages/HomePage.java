@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
     }
 
     public String getPageTitle() {
-        return getInnerText(title);
+        return getVisibleText(title);
     }
 
     public void selectProfileMenu(String menu) {

@@ -9,13 +9,13 @@ public class LoginPage extends BasePage {
     private final By inputPassword = By.cssSelector("input[name='password']");
     private final By loginButton = By.cssSelector("button[type='submit']");
 
-    public LoginPage enterUsername() {
-        sendKeys(inputUsername, "Admin");
+    public LoginPage enterUsername(String username) {
+        sendKeys(inputUsername, username);
         return this;
     }
 
-    public LoginPage enterPassword() {
-        sendKeys(inputPassword, "admin123");
+    public LoginPage enterPassword(String password) {
+        sendKeys(inputPassword, password);
         return this;
     }
 
