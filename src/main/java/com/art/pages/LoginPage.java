@@ -1,5 +1,6 @@
 package com.art.pages;
 
+import com.art.reports.ExtentManager;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage {
@@ -11,11 +12,13 @@ public class LoginPage extends BasePage {
 
     public LoginPage enterUsername(String username) {
         sendKeys(inputUsername, username);
+        ExtentManager.getExtentTest().pass("Enter username");
         return this;
     }
 
     public LoginPage enterPassword(String password) {
         sendKeys(inputPassword, password);
+        ExtentManager.getExtentTest().pass("Enter password");
         return this;
     }
 
