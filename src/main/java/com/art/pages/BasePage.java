@@ -2,6 +2,7 @@ package com.art.pages;
 
 import com.art.constants.FrameworkConstants;
 import com.art.driver.DriverManager;
+import com.art.reports.ExtentLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,8 +12,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class BasePage {
-    protected void click(By by) {
+    protected void click(By by, String msg) {
         waitForElementToBeClickable(by).click();
+        ExtentLogger.info("Clicked " + msg);
     }
 
     protected void clickSpecificElementByText(By by, String textValue) {
@@ -23,8 +25,9 @@ public class BasePage {
         foundElement.click();
     }
 
-    protected void sendKeys(By by, String value) {
+    protected void sendKeys(By by, String value, String msg) {
         waitForElementToBePresent(by).sendKeys(value);
+        ExtentLogger.info(msg + " : " + value);
     }
 
     protected String getVisibleText(By by) {

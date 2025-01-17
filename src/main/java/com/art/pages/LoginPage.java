@@ -1,6 +1,5 @@
 package com.art.pages;
 
-import com.art.reports.ExtentManager;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage {
@@ -11,18 +10,16 @@ public class LoginPage extends BasePage {
     private final By loginButton = By.cssSelector("button[type='submit']");
 
     public LoginPage enterUsername(String username) {
-        sendKeys(inputUsername, username);
-        ExtentManager.getExtentTest().pass("Enter username");
+        sendKeys(inputUsername, username, "Entered username");
         return this;
     }
 
     public LoginPage enterPassword(String password) {
-        sendKeys(inputPassword, password);
-        ExtentManager.getExtentTest().pass("Enter password");
+        sendKeys(inputPassword, password, "Entered password");
         return this;
     }
 
     public void clickLoginButton() {
-        click(loginButton);
+        click(loginButton, "Login button");
     }
 }

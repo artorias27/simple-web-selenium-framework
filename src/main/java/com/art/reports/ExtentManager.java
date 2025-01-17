@@ -2,14 +2,14 @@ package com.art.reports;
 
 import com.aventstack.extentreports.ExtentTest;
 
-public final class ExtentManager {
+final class ExtentManager {
     private static final ThreadLocal<ExtentTest> testThread = new ThreadLocal<>();
 
-    public static ExtentTest getExtentTest() {
+    static ExtentTest getExtentTest() {
         return testThread.get();
     }
 
-    public static void setExtentThread(ExtentTest test) {
+    static void setExtentThread(ExtentTest test) {
         testThread.set(test);
     }
 

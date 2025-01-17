@@ -11,28 +11,17 @@ public class JsonUtils {
     private JsonUtils() {}
 
     public static JSONObject loadJSON(String fileName) {
-        InputStream inputStream = null;
-        try {
-            inputStream = JsonUtils.class.getClassLoader().getResourceAsStream(fileName);
+        try (InputStream inputStream = JsonUtils.class.getClassLoader().getResourceAsStream(fileName)) {
             JSONTokener token = new JSONTokener(Objects.requireNonNull(inputStream));
             return new JSONObject(token);
-        } finally {
-            try {
-                Objects.requireNonNull(inputStream).close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     // Below getJsonValue methods are redundant. Will remove
     public static String getJsonValue(String key) {
         JSONObject jsonObject = loadJSON("config/config.json");
-        return jsonObject.getString(key);
-    }
-
-    public static String getJsonValue(String key, String fileName) {
-        JSONObject jsonObject = loadJSON(fileName);
         return jsonObject.getString(key);
     }
 }
