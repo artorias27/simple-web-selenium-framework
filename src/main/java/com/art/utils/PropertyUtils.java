@@ -22,10 +22,15 @@ public class PropertyUtils {
         }
     }
 
-    public static String getValue(String key) throws Exception {
-        String propValue = props.getProperty(key);
-        if (Objects.isNull(key) || Objects.isNull(propValue))
-            throw new Exception("Property name '" + key + "' is not found. Please Check 'config.properties'");
-        return propValue;
+    public static String getValue(String key) {
+        try {
+            String propValue = props.getProperty(key);
+            if (Objects.isNull(key) || Objects.isNull(propValue)) {
+                throw new NullPointerException("Property name '" + key + "' is not found. Please Check 'config.properties'");
+            }
+            return propValue;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

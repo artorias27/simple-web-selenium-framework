@@ -8,12 +8,12 @@ public class HomePage extends BasePage {
     private final By dropDownMenuItems = By.cssSelector(".oxd-userdropdown-link");
 
     public HomePage clickProfile() {
-        click(profileDropdownTab);
+        click(profileDropdownTab, "Profile");
         return this;
     }
 
     public String getPageTitle() {
-        return getInnerText(title);
+        return getVisibleText(title);
     }
 
     public void selectProfileMenu(String menu) {
