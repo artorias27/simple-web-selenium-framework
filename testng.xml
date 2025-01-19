@@ -3,6 +3,7 @@
 <suite name="All Test Suite" data-provider-thread-count="3">
     <listeners>
         <listener class-name="com.art.listeners.Listener" />
+        <listener class-name="com.art.listeners.MethodInterceptor" />
     </listeners>
     <test name="Test" parallel="tests">
         <classes>

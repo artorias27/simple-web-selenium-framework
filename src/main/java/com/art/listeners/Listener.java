@@ -8,6 +8,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Listener implements ITestListener, ISuiteListener {
 
@@ -38,6 +39,8 @@ public class Listener implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.fail(result.getMethod().getMethodName() + " is failed!");
+        ExtentLogger.fail(result.getThrowable().toString(), false);
+        ExtentLogger.fail(Arrays.toString(result.getThrowable().getStackTrace()), false);
     }
 
     @Override

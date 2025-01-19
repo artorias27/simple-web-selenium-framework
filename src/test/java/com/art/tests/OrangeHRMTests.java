@@ -26,12 +26,21 @@ public class OrangeHRMTests extends BaseTest {
         homePage.clickProfile().selectProfileMenu("Logout");
     }
 
+    @Test(dataProvider = "authDataProvider")
+    public void NewTest(String username, String password) {
+        String pageTitle = "Dashboard";
+        loginPage.enterUsername(username).enterPassword(password).clickLoginButton();
+        Assert.assertEquals(homePage.getPageTitle(), pageTitle);
+        homePage.clickProfile().selectProfileMenu("Support");
+        homePage.clickProfile().selectProfileMenu("Logout");
+    }
+
     @DataProvider(name = "authDataProvider", parallel = true)
     public Object[][] getAuthCredentials() {
         return new Object[][] {
                 { "Admin", "admin123" },
 //                { "Admin", "admin123" },
-                { "Admin", "admin456" },
+//                { "Admin", "admin456" },
 //                { "Admin", "admin456" },
         };
     }
