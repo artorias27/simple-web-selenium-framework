@@ -24,6 +24,14 @@ public final class ExtentLogger {
         ExtentManager.getExtentTest().fail(message);
     }
 
+    public static void fail(String message, Boolean attachScreenshot) {
+        if (attachScreenshot) {
+            ExtentManager.getExtentTest().fail(message, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64Image()).build());
+            return;
+        }
+        ExtentManager.getExtentTest().fail(message);
+    }
+
     public static void skip(String message) {
         if (PropertyUtils.getValue("skippedStepScreenshot").equalsIgnoreCase("yes")) {
             ExtentManager.getExtentTest().skip(message, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64Image()).build());
